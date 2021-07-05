@@ -1,12 +1,12 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - mern-tar
+name: Build and deploy Node.js app to Azure Web App - mern-react
 
 on:
   push:
     branches:
-      - tar
+      - react
   workflow_dispatch:
 
 jobs:
@@ -27,11 +27,14 @@ jobs:
         npm run build --if-present
         npm run test --if-present
 
+    - name: Archive Artifact
+      run: tar -cvf mern.tar .
+
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
         name: node-app
-        path: .
+        path: mern.tar
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,11 +49,14 @@ jobs:
       with:
         name: node-app
 
+    - name: Extract Archive
+      run: tar -xzvf mern.tar
+
     - name: 'Deploy to Azure Web App'
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'mern-tar'
+        app-name: 'mern-react'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_51fc76dae57348fe83fb3a8867021789 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_710db44ee10d4d5f85fb5d38ae1b3dd4 }}
         package: .
