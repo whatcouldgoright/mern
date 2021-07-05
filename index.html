@@ -10,6 +10,28 @@
 
     <body>
         <p>Root Index html</p>
+        <p id="env"></p>
+        <p id="results"></p>
+
+        <script type="text/javascript">
+
+            function load(url, targetElementId)
+            {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function() { 
+                    document.getElementById(targetElementId).innerHTML = xmlHttp.responseText;
+                }
+                xmlHttp.open("GET", url, true); // true for asynchronous 
+                xmlHttp.send(null);
+            }
+
+            load('http://localhost:5001/api/vars/DB_USER', 'env');
+            load('http://localhost:5001/api/thoughts', 'results');
+
+        </script>
     </body>
 
+
+
 </html>
+
