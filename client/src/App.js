@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 
+import Auth from './Components/Auth'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,10 @@ class App extends Component {
 
     return (
       <div className="App">
+
+        <Auth />
+
+        <br /><br /><br />
         {/* Buttons to interact with API */}
         <button onClick={this.createThought}>Create Thought</button>
         <button onClick={this.deleteThoughts}>Delete Thoughts</button>
@@ -75,3 +81,5 @@ class App extends Component {
 }
 
 export default App;
+
+

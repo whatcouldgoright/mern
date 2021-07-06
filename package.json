@@ -5,13 +5,13 @@
     "license": "MIT",
     "scripts": {
         "start": "node server",
-        "client": "cd client && yarn && yarn run build && cd .. && yarn",
-        "dev": "node server"
+        "dev": "cd client && yarn && yarn run build && cd .. && node server"
     },
     "dependencies": {
         "body-parser": "^1.19.0",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
+        "google-auth-library": "^7.2.0",
         "mongoose": "^5.13.2"
     }
 }
