@@ -4,8 +4,7 @@
     "main": "server.js",
     "license": "MIT",
     "scripts": {
-        "start": "node server",
-        "build": "cd client && yarn && yarn run build",
+        "start": "cd client && yarn && yarn run build && cd .. && node server",
         "dev": "node server"
     },
     "dependencies": {
